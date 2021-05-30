@@ -11,6 +11,11 @@ services:
       context: .
       dockerfile: Dockerfile
     command: './entrypoint.sh'
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=hunter2
     ports:
       - "3000:3000"
     volumes:
@@ -25,5 +30,5 @@ services:
     volumes:
        - ./tmp/db:/var/lib/postgresql/data
     environment:
-       POSTGRES_USER: rails
+       POSTGRES_USER: postgres
        POSTGRES_PASSWORD: hunter2
