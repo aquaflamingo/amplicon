@@ -26,13 +26,17 @@ group :development do
   gem 'spring'
 end
 
+group :test, :development do 
+  gem "rspec-rails", "~> 5.0.0"
+end
+
 group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem "webmock", "~> 3.8.3"
+  gem "database_cleaner-active_record", "~> 1.8.0"
   gem "factory_bot_rails", "~> 5.1.1"
-  gem "rspec-rails", "~> 4.0.0"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
