@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_051904) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "type"
+    t.integer "resource"
   end
 
 end
