@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   host: <%= ENV['DATABASE_HOST'] ||= 'localhost' %>
   port: <%= ENV['DATABASE_PORT'] ||= '5432' %>
-  username: <%= ENV['DATABASE_USER'] ||= 'rails' %>
+  username: <%= ENV['DATABASE_USER'] ||= 'postgres' %>
   password: <%= ENV['DATABASE_PASSWORD'] ||= 'hunter2' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
