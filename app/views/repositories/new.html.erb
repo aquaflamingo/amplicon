@@ -1,2 +1,15 @@
-<h1>Repositories#new</h1>
-<p>Find me in app/views/repositories/new.html.erb</p>
+<h1>Create new repository</h1>
+<%= form_with(model: @repo) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <small id="name_help" class="form-text text-muted">The name of the repo</small>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+    <small id="name_help" class="form-text text-muted">What is this repository about?</small>
+  </div>
+  <%= f.submit "Create", class: "btn btn-primary"%>
+<% end %>

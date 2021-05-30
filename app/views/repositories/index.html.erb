@@ -1,4 +1,10 @@
 <h1>Explore</h1>
-<% @repositories.each do |r| %>
-  <%= link_to r.name, r %>
-<% end %>
+<div>
+  <% @repositories.each do |r| %>
+    <%= link_to r.name, r %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "Create Repository", new_repository_path %>
+</div>

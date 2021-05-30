@@ -8,13 +8,24 @@ class RepositoriesController < ApplicationController
   end
 
   def create
+    @repo = Repository.new(repo_params)
+    if @repo.save
+      redirect_to @repo, success: "Repository created"
+    else
+      redirect_to new_repo_path, warning: "Failed to create repository"
+    end
   end
 
   def new
+    @repo = Repository.new
   end
 
   private 
   def set_repo
     @repo = Repository.find(params[:id])
+  end
+
+  def repo_params
+    params.require(:repository).permit(:name, :description)
   end
 end
