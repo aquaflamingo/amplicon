@@ -15,7 +15,6 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-    env_file: .env.docker
     depends_on:
       - redis
       - db
