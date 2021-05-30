@@ -12,7 +12,7 @@ class RepositoriesController < ApplicationController
     if @repo.save
       redirect_to @repo, success: "Repository created"
     else
-      redirect_to new_repo_path, warning: "Failed to create repository"
+      redirect_to new_repository_path, warning: "Failed to create repository"
     end
   end
 
@@ -26,6 +26,6 @@ class RepositoriesController < ApplicationController
   end
 
   def repo_params
-    params.require(:repository).permit(:name, :description)
+    params.require(:repository).permit(:name, :description, :resource)
   end
 end

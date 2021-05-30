@@ -11,5 +11,18 @@
     <%= f.text_field :description, class: 'form-control' %>
     <small id="name_help" class="form-text text-muted">What is this repository about?</small>
   </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.collection_select(
+      :resource, 
+      repository_resources, 
+      :value, 
+      :display_name, 
+      { include_hidden: false, include_blank: false }, 
+      { multiple: false, class: 'form-control', size: 1 }
+    )
+    %>
+
   <%= f.submit "Create", class: "btn btn-primary"%>
 <% end %>
