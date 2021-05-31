@@ -6,7 +6,13 @@ class Repository < ApplicationRecord
   validates :description, presence: true, length: { minimum: 0, maximum: 140 }
   validates :resource, presence: true, inclusion: resources.keys
 
-  after_create :initialize_bare_repository
+  after_create :initialize_repository
+
+  def content
+    @content ||= Git.bare(
+      local_disk_path
+    )
+  end
 
   private 
   def initialize_repository
