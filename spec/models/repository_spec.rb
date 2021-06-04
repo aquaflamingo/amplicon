@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Repository, type: :model do
   describe '.after_create => initialize_repository' do
     context 'for a protocol resource'  do
-      let(:repo) { build(:repo) }
+      let(:repo) { FactoryBot.build(:repo) }
 
       before do 
         allow(repo).to receive(:local_disk_path).and_return("./tmp/test/git/#{repo.name}.git")
@@ -13,7 +13,7 @@ RSpec.describe Repository, type: :model do
         expect { 
           repo.save!
         }.to change {
-          File.exist?("./tmp/test/git/#{repo.name}.git")
+          File.exist?(Rails.root.join("tmp/test/git/#{repo.name}.git"))
         }.from(false).to(true)
       end
     end
