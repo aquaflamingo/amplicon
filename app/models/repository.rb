@@ -25,19 +25,31 @@ class Repository < ApplicationRecord
   end
 
   def local_disk_path
-    "/var/git/user/#{name}.git"
+    Rails.root.join("tmp/git/user/#{name}.git")
   end
 
   def make_protocol_starter(git_repo)
-    FileUtils.mkdir(
+    begin 
+    FileUtils.mkdir_p(
+      [
       File.join(local_disk_path, "methods"), 
       File.join(local_disk_path, "reagents"),
       File.join(local_disk_path, "equipment")
+      ]
     )
 
-    FileUtils.touch(File.join(local_disk_path), "README.md")
+    path = File.join(local_disk_path, "README.md")
+    File.open(path, "w") { |f| f.puts "# #{name}" }
 
+      binding.pry
+      # TODO cannot add and commit to bare repo
     git_repo.add(all: true)
     git_repo.commit("Initialize repository")
+      binding.pry
+    rescue Exception => e
+      Rails.logger.error("Failed to initiatize repository #{e.message}")
+
+      FileUtils.rm_rf(local_disk_path)
+    end
   end
 end
