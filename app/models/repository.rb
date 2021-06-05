@@ -16,19 +16,21 @@ class Repository < ApplicationRecord
 
   private 
   def initialize_repository
-    g = Git.init(
-      local_disk_path,
-      bare: true
-    )
-
-    make_protocol_starter(g)
+    init_local(local_disk_path)
+    upload_bare_remote(local_disk_path)
   end
 
   def local_disk_path
-    Rails.root.join("tmp/git/user/#{name}.git")
+    Rails.root.join("tmp/git/user/#{name}")
   end
 
-  def make_protocol_starter(git_repo)
+  def upload_bare_remote(path)
+    git_repo = Git.clone(path, bare: true)
+  end
+
+  def init_local(path)
+    git_repo = Git.init(path)
+
     begin 
     FileUtils.mkdir_p(
       [
@@ -41,11 +43,8 @@ class Repository < ApplicationRecord
     path = File.join(local_disk_path, "README.md")
     File.open(path, "w") { |f| f.puts "# #{name}" }
 
-      binding.pry
-      # TODO cannot add and commit to bare repo
     git_repo.add(all: true)
     git_repo.commit("Initialize repository")
-      binding.pry
     rescue Exception => e
       Rails.logger.error("Failed to initiatize repository #{e.message}")
 
