@@ -29,7 +29,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.before :suite do
-    FileUtils.mkdir_p(Rails.root.join("tmp/test/git"))
+    FileUtils.mkdir_p(Rails.root.join("tmp","git"))
 
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
@@ -40,9 +40,7 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
-   end
 
-  config.after :suite do
-    FileUtils.rm_rf(Rails.root.join("tmp/test/git"))
-  end
+    FileUtils.rm_rf(Rails.root.join("tmp","git"))
+   end
 end

@@ -5,15 +5,11 @@ RSpec.describe Repository, type: :model do
     context 'for a protocol resource'  do
       let(:repo) { FactoryBot.build(:repo) }
 
-      before do 
-        allow(repo).to receive(:local_disk_path).and_return("./tmp/test/git/#{repo.name}.git")
-      end
-
       it 'initializes a git repo' do
         expect { 
           repo.save!
         }.to change {
-          File.exist?(Rails.root.join("tmp/test/git/#{repo.name}.git"))
+          File.exist?(Rails.root.join("tmp/git/#{repo.user}/#{repo.name}.git"))
         }.from(false).to(true)
       end
     end
