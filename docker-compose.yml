@@ -32,10 +32,3 @@ services:
     environment:
        POSTGRES_USER: postgres
        POSTGRES_PASSWORD: hunter2
-  #git:
-    #image: robertsimoes/git_docker
-    #ports:
-      #- "2222:22"
-    #volumes:
-    #- ./var/git/keys:/src/keys
-    #- ./var/git/repos:/srv/git

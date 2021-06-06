@@ -29,8 +29,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.before :suite do
-    FileUtils.mkdir_p(Rails.root.join("tmp","git"))
-
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
     Rails.application.load_seed # load db seeds
@@ -40,7 +38,5 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
-
-    FileUtils.rm_rf(Rails.root.join("tmp","git"))
    end
 end
