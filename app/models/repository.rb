@@ -1,4 +1,6 @@
 class Repository < ApplicationRecord
+  GFile = Struct.new(:name, :sha, :raw)
+
   # The type of repository
   enum resource: [:protocol]
 
@@ -12,13 +14,25 @@ class Repository < ApplicationRecord
     "user"
   end
 
+  def contents 
+    gfiles = g.gtree("HEAD").blobs.map do |fname, gobject|
+      GFile.new(
+        fname,
+        gobject.sha,
+        gobject.contents
+      )
+    end
+
+    gfiles
+  end
+
+  private 
   def g
     @g ||= Git.open(
       local_disk_path
     )
   end
 
-  private 
   def initialize_repository
     init_local(local_disk_path)
     upload_bare_remote(local_disk_path)
