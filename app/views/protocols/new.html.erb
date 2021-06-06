@@ -12,5 +12,30 @@
     <small id="description_help" class="form-text text-muted">What is this protocol about?</small>
   </div>
 
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :reagents %>
+      <%= f.rich_text_area :reagents %>
+      <small id="reagents_help" class="f-text text-muted">What are the necessary reagents?</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :equipment %>
+      <%= f.rich_text_area :equipment %>
+      <%= @proto.equipment %>
+      <small id="equipment_help" class="f-text text-muted">What is this equipment about?</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :materials %>
+      <%= f.rich_text_area :materials %>
+      <small id="materials_help" class="f-text text-muted">What is this materials about?</small>
+    </div>
+  </div>
+
   <%= f.submit "Create", class: "btn btn-primary"%>
 <% end %>
