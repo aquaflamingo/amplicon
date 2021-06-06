@@ -1,5 +1,5 @@
 class ProtocolsController < ApplicationController
-  before_action :set_protocol, only: [:show]
+  before_action :set_proto, only: [:show]
   def index
     @proto = Protocol.all
   end
@@ -26,6 +26,6 @@ class ProtocolsController < ApplicationController
   end
 
   def proto_params
-    params.require(:protocol).permit(:name, :description)
+    params.require(:protocol).permit(:name, :description, :equipment, :reagents, :materials)
   end
 end
