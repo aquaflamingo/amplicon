@@ -1,7 +1,11 @@
 <h1>Explore</h1>
-<div>
-  <% @protocols.each do |r| %>
+<div class="content-feed">
+  <% if @proto.empty? %>
+    <p> Nothing new yet! </p>
+  <% else %>
+  <% @proto.each do |r| %>
     <%= link_to r.name, r %>
+  <% end %>
   <% end %>
 </div>
 
