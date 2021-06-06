@@ -12,8 +12,8 @@ class Repository < ApplicationRecord
     "user"
   end
 
-  def content
-    @content ||= Git.bare(
+  def g
+    @g ||= Git.open(
       local_disk_path
     )
   end
@@ -38,16 +38,10 @@ class Repository < ApplicationRecord
     git_repo = Git.init(path.to_s)
 
     begin 
-    FileUtils.mkdir_p(
-      [
-      File.join(path, "methods"), 
-      File.join(path, "reagents"),
-      File.join(path, "equipment")
-      ]
-    )
-
-    readme = File.join(path, "README.md")
-    File.open(readme, "w") { |f| f.puts "# #{name}" }
+      File.open(File.join(path, "methods.md"), "w") { |f| f.puts "# Methods" }
+      File.open(File.join(path, "reagents.md"),"w") { |f| f.puts "# Reagents" }
+      File.open(File.join(path, "equipment.md"), "w") { |f| f.puts "# Equipment" }
+      File.open(File.join(path, "README.md"), "w") { |f| f.puts "# #{name}" }
 
     git_repo.add(all: true)
     git_repo.commit("Initialize repository")
