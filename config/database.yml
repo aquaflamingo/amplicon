@@ -9,8 +9,8 @@ default: &default
 
 development:
   <<: *default
-  database: amplicon_development
+  database: git_port_development
 
 test:
   <<: *default
-  database: amplicon_test
+  database: git_port_test
