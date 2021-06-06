@@ -1,3 +1,3 @@
-module ProtocolHelper
+module ProtocolsHelper
 
 end
