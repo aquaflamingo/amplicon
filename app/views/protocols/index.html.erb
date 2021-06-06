@@ -1,0 +1,10 @@
+<h1>Explore</h1>
+<div>
+  <% @protocols.each do |r| %>
+    <%= link_to r.name, r %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "Create Protocol", new_protocol_path %>
+</div>

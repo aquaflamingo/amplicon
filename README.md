@@ -9,6 +9,6 @@ Amplicon is a biochemistry lab hosting application. In the objective of Amplicon
 2. Discover new laboratory protocols, tools, and methods which enable them to work on projects they work on
 
 ## How does Amplicon work?
-Amplicon users create Amplicon repositories which are version controlled. An Amplicon repository represents a particular resource which dictates it's structure and requirements. In other words, a repository has a resource type which opinionates the structure under the hood.
+Amplicon users create Amplicon protocols which are version controlled. An Amplicon repository represents a particular resource which dictates it's structure and requirements. In other words, a repository has a resource type which opinionates the structure under the hood.
 
 

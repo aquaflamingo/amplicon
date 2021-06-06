@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_051904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "repositories", force: :cascade do |t|
+  create_table "protocols", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false

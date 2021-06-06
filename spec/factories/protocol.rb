@@ -1,7 +1,6 @@
 FactoryBot.define do 
-  factory :repository, aliases: [:repo] do 
+  factory :protocol, aliases: [:proto] do 
     sequence(:name) {|n| "name_#{n}"}
     description { "description" }
-    resource { :protocol }
   end
 end
