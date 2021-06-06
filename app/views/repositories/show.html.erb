@@ -6,8 +6,12 @@
 <p> Resource </p>
 <%= @repo.resource %>
 
-<div>
-  <code>
-    Content would go here.
-  </code>
+<div class="repo-content-list">
+  <ul class="list-group">
+    <% @repo.contents.each do |file| %>
+      <li class="list-group-item">
+        <%= link_to file.name, repository_path(@repo) %>
+      </li>
+    <% end %>
+  </ul>
 </div>

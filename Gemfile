@@ -11,12 +11,15 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
-gem "stimulus_reflex", "~> 3.4"
+gem "git"
+gem "rename"
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem "rspec-rails", "~> 5.0.0"
 end
 
 group :development do
@@ -24,10 +27,6 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
-end
-
-group :test, :development do 
-  gem "rspec-rails", "~> 5.0.0"
 end
 
 group :test do
@@ -40,4 +39,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
