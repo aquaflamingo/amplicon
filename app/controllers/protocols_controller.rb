@@ -1,5 +1,7 @@
 class ProtocolsController < ApplicationController
   before_action :set_proto, only: [:show]
+  before_action :require_login
+
   def index
     @proto = Protocol.all
   end
