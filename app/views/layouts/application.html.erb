@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <div class="nav">
+      <h1> Amplicon </h1>
+      <%= link_to current_user.email, user_path(current_user) %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
