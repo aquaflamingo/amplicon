@@ -14,7 +14,24 @@
     <% if signed_in? %>
     <div class="nav">
       <h1> Amplicon </h1>
-      <%= link_to current_user.username, user_path(current_user) %>
+        <%= link_to current_user.username, user_path(current_user) %>
+        <%= link_to "Sign out", sign_out_path, method: :delete %>
+    </div>
+    <% end %>
+
+    <div id="flash-container">
+      <% if !flash.empty? %>
+        <div class="container py-2">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, class: "alert alert-#{name} alert-dismissible fade show" do %>
+              <%= msg %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            <% end %>
+          <%end%>
+        </div>
+      <%end%>
     </div>
   <% end %>
 
