@@ -3,14 +3,14 @@ class ProtocolsController < ApplicationController
   before_action :require_login
 
   def index
-    @proto = Protocol.all
+    @proto = current_user.protocols
   end
 
   def show
   end
 
   def create
-    @proto = Protocol.new(proto_params)
+    @proto = current_user.protocols.build(proto_params)
     if @proto.save
       redirect_to @proto, success: "Protocol created"
     else
@@ -19,7 +19,7 @@ class ProtocolsController < ApplicationController
   end
 
   def new
-    @proto = Protocol.new
+    @proto = current_user.protocols.new
   end
 
   private 
