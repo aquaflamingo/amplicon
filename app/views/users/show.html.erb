@@ -1,2 +1,17 @@
-<h1><%= @user.email %></h1>
-<p>I am a user!</p>
+<!-- Col 3 -->
+<h2>@<%= @user.email %></h2>
+<p> User Info </p>
+
+<!-- Col 9 -->
+<h3> Protocols </h3>
+<div>
+  <% @user.protocols.each do |p| %>
+    <! -- card -->
+    <div>
+      <%= link_to protocol_path(p) do %>
+        <p><%= p.name %></p>
+        <p><%= p.description %></p>
+      <% end %>
+    </div>
+  <% end%>
+</div>
