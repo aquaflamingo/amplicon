@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
+  username: "amplicon_user",
   email: "dev@amplicon.app",
   password: "hunter2"
 )

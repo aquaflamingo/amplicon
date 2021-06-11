@@ -8,4 +8,6 @@ class Protocol < ApplicationRecord
   has_rich_text :reagents
   has_rich_text :equipment
   has_rich_text :materials
+
+  alias_attribute :owner, :user 
 end
