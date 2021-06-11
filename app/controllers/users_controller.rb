@@ -1,4 +1,4 @@
-class UsersController < Clearance::UserController
+class UsersController < Clearance::UsersController
   before_action :require_login, only: [:show]
   before_action :set_user, only: [:show]
 
