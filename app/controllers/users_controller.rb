@@ -16,6 +16,7 @@ class UsersController < Clearance::UsersController
     else
       render template: "users/new", warning: @user.errors.full_messages.join(" ")
     end
+  end
 
   def show
   end
