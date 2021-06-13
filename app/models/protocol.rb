@@ -1,5 +1,8 @@
 class Protocol < ApplicationRecord
   belongs_to :user
+  has_many :favorite_protocols # setup relationship
+
+  has_many :favorited_by, through: :favorite_protocols, source: :user
 
   # The type of protocol
   validates :name, presence: true, length: { minimum: 3, maximum: 20 }
