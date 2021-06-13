@@ -2,6 +2,9 @@
 <p> Description </p>
 <%= @proto.description %>
 
+<h2>Popularity</h2>
+Favourited by <%= @proto.favorited_by.size %> users.
+
 <h2> Equipment </h2>
 <%= @proto.equipment %>
 
@@ -10,3 +13,10 @@
 
 <h2> Reagents </h2>
 <%= @proto.reagents %>
+
+<% if has_favorited?(current_user, @proto) %>
+  <%= button_to "Unfavorite", favorite_protocol_path(@proto, action_type: "unfavorite"), method: :put %>
+<% else %>
+  <%= button_to "Favorite", favorite_protocol_path(@proto, action_type: "favorite"), method: :put %>
+<% end %>
+
