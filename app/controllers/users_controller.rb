@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show, :edit]
   before_action :set_user, only: [:show]
   before_action :set_user_protocols, only: [:show]
 
@@ -8,10 +8,23 @@ class UsersController < Clearance::UsersController
   #########################################################
   def show
   end
+
+  def edit
+    @user = current_user
+  end
   
   #########################################################
   # Write
   #########################################################
+  def update
+    @user = current_user
+
+    if @user.update(user_update_params)
+      redirect_to @user
+    else
+      render :edit, warning: @user.errors.full_messages.join(" ")
+    end
+  end
   
   def create
     @user = user_from_params
@@ -31,6 +44,10 @@ class UsersController < Clearance::UsersController
 
   def set_user_protocols
     @user_protocols ||= find_user_protocols
+  end
+
+  def user_update_params
+    user_params.permit(:username)
   end
 
   # Parameters used to create a new user record via +new+ and +create
