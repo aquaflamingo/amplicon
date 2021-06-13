@@ -6,8 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(
-  username: "amplicon_user",
-  email: "dev@amplicon.app",
-  password: "hunter2"
-)
+3.times do |i| 
+  u = User.create!(
+    username: "amplicon_user_#{i}",
+    email: "user_#{i}@amplicon.app",
+    password: "hunter_#{i}"
+  )
+
+  other_users = User.all
+
+  other_users.each do |other| 
+    u.follow(other)
+    u.save
+  end
+end
+
