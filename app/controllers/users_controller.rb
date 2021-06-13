@@ -1,6 +1,7 @@
 class UsersController < Clearance::UsersController
   before_action :require_login, only: [:show]
   before_action :set_user, only: [:show]
+  before_action :set_user_protocols, only: [:show]
 
   def create
     @user = user_from_params
@@ -21,6 +22,10 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
   end
 
+  def set_user_protocols
+    @user_protocols ||= find_user_protocols
+  end
+
   # Parameters used to create a new user record via +new+ and +create
   def user_from_params
     email = user_params.delete(:email)
@@ -32,5 +37,17 @@ class UsersController < Clearance::UsersController
       user.email = email
       user.password = password
     end
+  end
+
+  def find_user_protocols
+    private_status = [:false]
+
+    # If the current user is the user being shown show the private repositories
+    # Otherwise, leave out
+    if current_user.id == @user.id
+      private_status << :true 
+    end
+
+    @user.protocols.where(private: private_status)
   end
 end
