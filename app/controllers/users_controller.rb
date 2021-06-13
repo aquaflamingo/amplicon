@@ -2,6 +2,17 @@ class UsersController < Clearance::UsersController
   before_action :require_login, only: [:show]
   before_action :set_user, only: [:show]
 
+  def create
+    @user = user_from_params
+
+    if @user.save
+      sign_in @user
+      redirect_back_or url_after_create
+    else
+      redirect_to sign_up_path, warning: @user.errors.full_messages.join(" ")
+    end
+  end
+
   def show
   end
 
