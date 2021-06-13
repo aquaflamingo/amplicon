@@ -1,6 +1,17 @@
 class ProtocolsController < ApplicationController
-  before_action :set_proto, only: [:show]
+  before_action :set_proto, only: [:show, :favorite]
   before_action :require_login
+
+  def favorite 
+    if favorite_params[:action_type] == "favorite"
+      current_user.favorites << @proto
+    else 
+      current_user.favorites.delete(@proto.id)
+    end
+
+    current_user.save!
+    redirect_to @proto
+  end
 
   def index
     @proto = current_user.protocols
@@ -29,5 +40,9 @@ class ProtocolsController < ApplicationController
 
   def proto_params
     params.require(:protocol).permit(:name, :description, :equipment, :reagents, :materials)
+  end
+
+  def favorite_params
+    params.permit(:action_type)
   end
 end
