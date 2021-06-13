@@ -1,7 +1,7 @@
 <h1>Edit protocol</h1>
 <%= form_with(model: @proto) do |form| %>
 
-  <%= render partial: "/protocols/form", object: form, locals: { private: @proto.private } %>
+  <%= render partial: "/protocols/form", object: form, locals: { current_private_setting: @proto.private } %>
 
   <div class="submit-field">
     <%= form.submit "Update", class: "btn btn-primary"%>
