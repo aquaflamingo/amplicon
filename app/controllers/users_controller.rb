@@ -3,6 +3,16 @@ class UsersController < Clearance::UsersController
   before_action :set_user, only: [:show]
   before_action :set_user_protocols, only: [:show]
 
+  #########################################################
+  # Read
+  #########################################################
+  def show
+  end
+  
+  #########################################################
+  # Write
+  #########################################################
+  
   def create
     @user = user_from_params
 
@@ -12,9 +22,6 @@ class UsersController < Clearance::UsersController
     else
       redirect_to sign_up_path, warning: @user.errors.full_messages.join(" ")
     end
-  end
-
-  def show
   end
 
   private
