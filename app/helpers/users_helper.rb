@@ -1,5 +1,5 @@
 module UsersHelper
-  def current_user_relationship_to(user)
+  def find_current_user_relationship_to(user)
     current_user.active_relationships.find_by(followed_id: user.id )
   end
 
