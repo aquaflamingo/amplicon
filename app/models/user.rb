@@ -27,20 +27,16 @@ class User < ApplicationRecord
 
   # Checks whether the User is following another user
   def following?(other_user)
-    binding.pry
-    active_relationships.exists?(other_user.id)
+    following.include?(other_user)
   end
 
   # Start following another user
-  def follow!(other_user)
-    binding.pry
-    active_relationships.create!(
-      followed_id: other_user.id
-    )
+  def follow(other_user)
+    following << other_user unless other_user == self
   end
 
   # Unfollow an previously followed user
-   def unfollow!(other_user)
-     passive_relationships.find(other_user.id).destroy
+   def unfollow(other_user)
+     following.delete(other_user)
   end
 end
