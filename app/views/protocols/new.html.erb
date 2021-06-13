@@ -13,6 +13,16 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :private, "Private", value: "true" %>
+    <%= f.radio_button :private, true, :checked => true %>
+    <%= f.label :private, "Public", value: "false" %>
+    <%= f.radio_button :private, false, :checked => false %>
+    <small id="private_help" class="form-text text-muted">Toggle whether this protocol is visible publicly</small>
+  </div>
+
+  <hr/>
+
+  <div class="form-group">
     <div class="field">
       <%= f.label :reagents %>
       <%= f.rich_text_area :reagents %>
