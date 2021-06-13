@@ -1,4 +1,4 @@
-class RelationshipController < ApplicationController
+class RelationshipsController < ApplicationController
   before_action :require_login
   before_action :set_relationship, only: [:destroy]
 
@@ -22,6 +22,6 @@ class RelationshipController < ApplicationController
   end
 
   def relationship_params
-    params.require(:relationship).permit(:followed_id)
+    params.permit(:followed_id)
   end
 end
