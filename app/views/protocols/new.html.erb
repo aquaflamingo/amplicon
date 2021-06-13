@@ -1,51 +1,9 @@
 <h1>Create new protocol</h1>
-<%= form_with(model: @proto) do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-    <small id="name_help" class="form-text text-muted">The name of the protocol</small>
+<%= form_with(model: @proto) do |form| %>
+
+  <%= render "/protocols/form", object: form %>
+
+  <div class="submit-field">
+    <%= form.submit "Create", class: "btn btn-primary"%>
   </div>
-
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_field :description, class: 'form-control' %>
-    <small id="description_help" class="form-text text-muted">What is this protocol about?</small>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :private, "Private", value: "true" %>
-    <%= f.radio_button :private, true, :checked => true %>
-    <%= f.label :private, "Public", value: "false" %>
-    <%= f.radio_button :private, false, :checked => false %>
-    <small id="private_help" class="form-text text-muted">Toggle whether this protocol is visible publicly</small>
-  </div>
-
-  <hr/>
-
-  <div class="form-group">
-    <div class="field">
-      <%= f.label :reagents %>
-      <%= f.rich_text_area :reagents %>
-      <small id="reagents_help" class="f-text text-muted">What are the necessary reagents?</small>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="field">
-      <%= f.label :equipment %>
-      <%= f.rich_text_area :equipment %>
-      <%= @proto.equipment %>
-      <small id="equipment_help" class="f-text text-muted">What is this equipment about?</small>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="field">
-      <%= f.label :materials %>
-      <%= f.rich_text_area :materials %>
-      <small id="materials_help" class="f-text text-muted">What is this materials about?</small>
-    </div>
-  </div>
-
-  <%= f.submit "Create", class: "btn btn-primary"%>
 <% end %>

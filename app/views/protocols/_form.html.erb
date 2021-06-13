@@ -1,0 +1,46 @@
+<div class="form-group">
+  <%= form.label :name %>
+  <%= form.text_field :name, class: 'form-control' %>
+  <small id="name_help" class="form-text text-muted">The name of the protocol</small>
+</div>
+
+<div class="form-group">
+  <%= form.label :description %>
+  <%= form.text_field :description, class: 'form-control' %>
+  <small id="description_help" class="form-text text-muted">What is this protocol about?</small>
+</div>
+
+<div class="form-group">
+  <%= form.label :private, "Private", value: "true" %>
+  <%= form.radio_button :private, true, :checked => current_private_setting %>
+  <%= form.label :private, "Public", value: "false" %>
+  <%= form.radio_button :private, false, :checked => !current_private_setting %>
+  <small id="private_help" class="form-text text-muted">Toggle whether this protocol is visible publicly</small>
+</div>
+
+<hr/>
+
+<div class="form-group">
+  <div class="field">
+    <%= form.label :reagents %>
+    <%= form.rich_text_area :reagents %>
+    <small id="reagents_help" class="form-text text-muted">What are the necessary reagents?</small>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="field">
+    <%= form.label :equipment %>
+    <%= form.rich_text_area :equipment %>
+    <%= @proto.equipment %>
+    <small id="equipment_help" class="form-text text-muted">What is this equipment about?</small>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="field">
+    <%= form.label :materials %>
+    <%= form.rich_text_area :materials %>
+    <small id="materials_help" class="form-text text-muted">What is this materials about?</small>
+  </div>
+</div>
