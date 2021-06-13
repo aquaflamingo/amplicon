@@ -1,8 +1,0 @@
-<div id="follow_form">
-<% if current_user.following?(@user) %>
-  <%= render partial: '/users/unfollow', locals: { current_relationship: current_user_relationship_to(@user)} %>
-<% else %>
-  <%= render partial: '/users/follow', locals: { relationship: Relationship.new }%>
-<% end %>
-</div>
-

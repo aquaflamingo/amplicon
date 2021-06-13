@@ -1,0 +1,11 @@
+<!-- Do not allow users to follow themself -->
+<%  unless is_current_user?(@user) %>
+  <div id="follow_form">
+  <% if current_user.following?(@user) %>
+    <%= render partial: '/users/unfollow', locals: { current_relationship: find_current_user_relationship_to(@user)} %>
+  <% else %>
+    <%= render partial: '/users/follow' %>
+  <% end %>
+  </div>
+<% end %>
+
