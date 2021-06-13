@@ -12,9 +12,9 @@
 
 <div class="form-group">
   <%= form.label :private, "Private", value: "true" %>
-  <%= form.radio_button :private, true, :checked => current_private_setting %>
+  <%= form.radio_button :private, true, :checked => default_private_value %>
   <%= form.label :private, "Public", value: "false" %>
-  <%= form.radio_button :private, false, :checked => !current_private_setting %>
+  <%= form.radio_button :private, false, :checked => !default_private_value %>
   <small id="private_help" class="form-text text-muted">Toggle whether this protocol is visible publicly</small>
 </div>
 
