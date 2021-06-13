@@ -1,7 +1,7 @@
 <h1>Create new protocol</h1>
 <%= form_with(model: @proto) do |form| %>
 
-  <%= render "/protocols/form", object: form %>
+  <%= render partial: "/protocols/form", object: form, locals: { default_private_value: @proto.private? } %>
 
   <div class="submit-field">
     <%= form.submit "Create", class: "btn btn-primary"%>
