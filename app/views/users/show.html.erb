@@ -11,6 +11,7 @@
       <%= link_to protocol_path(p) do %>
         <p><%= p.name %></p>
         <p><%= p.description %></p>
+        <p><%= p.favorited_by.count %> favorite </p> 
       <% end %>
     </div>
   <% end%>
