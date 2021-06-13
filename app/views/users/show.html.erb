@@ -4,7 +4,7 @@
 <% if is_current_user?(@user) %>
   <p> TODO EDIT </p>
 <% else %>
-  <%= render partial: '/users/follow', object: @user %>
+  <%= render partial: '/users/follow_relationships', object: @user %>
 <% end %>
 
 <!-- Col 9 -->
