@@ -2,6 +2,8 @@
 <%= render_visibility_badge(@proto) %>
 <%= @proto.description %>
 
+<%= link_to "Edit", edit_protocol_path(@proto) %>
+
 <h2>Popularity</h2>
 Favourited by <%= @proto.favorited_by.size %> users.
 
