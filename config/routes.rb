@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  # TODO follower stats
   resources :users
+
+  resources :relationships, only: [:create, :destroy]
 end
