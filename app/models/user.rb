@@ -7,16 +7,40 @@ class User < ApplicationRecord
   has_many :favorite_protocols # setup relationship
   has_many :favorites, through: :favorite_protocols, source: :protocol
 
-  # Who has followed this user
-  has_many :follower_relationships, foreign_key: "followed_id", class_name: "Relationship"
-  # Who has this user followed
-  has_many :followed_relationships, foreign_key: "follower_id", class_name: "Relationship"
+  has_many :active_relationships, 
+    foreign_key: "follower_id", 
+    class_name: "Relationship",
+    dependent:   :destroy
+  
+  has_many :passive_relationships, 
+    foreign_key: "followed_id", 
+    class_name: "Relationship",
+    dependent:   :destroy
 
-  has_many :followers, through: :follower_relationships, source: :follower
-  has_many :following, through: :followed_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :following, through: :active_relationships, source: :followed
 
   validates :username, 
     presence: true, 
     length: {minimum: 2, maximum: 20 },
     format: { with: VALID_USERNAME, message: 'Username can only include numbers, letters or underscores.'  }
+
+  # Checks whether the User is following another user
+  def following?(other_user)
+    binding.pry
+    active_relationships.exists?(other_user.id)
+  end
+
+  # Start following another user
+  def follow!(other_user)
+    binding.pry
+    active_relationships.create!(
+      followed_id: other_user.id
+    )
+  end
+
+  # Unfollow an previously followed user
+   def unfollow!(other_user)
+     passive_relationships.find(other_user.id).destroy
+  end
 end
