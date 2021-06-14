@@ -47,7 +47,7 @@ class UsersController < Clearance::UsersController
   end
 
   def user_update_params
-    user_params.permit(:username)
+    user_params.permit(:username, :avatar)
   end
 
   # Parameters used to create a new user record via +new+ and +create
