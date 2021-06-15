@@ -8,7 +8,6 @@
   </div>
 
   <div data-controller="image-preview">
-    <!-- TODO stimulus -->
     <%= image_tag(@user.avatar.variant(resize: "100x100"), data: { target: "image-preview.output" }) %>
   
     <div class="form-group">
