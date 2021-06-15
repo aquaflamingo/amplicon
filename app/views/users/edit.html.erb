@@ -1,19 +1,25 @@
 <h2> Edit Account </h2>
-
-<h3> Security </h3>
-<%= link_to "Change Password", new_password_path %>
-
-<h3> Username </h3>
+<h3> Profile </h3>
 <%= form_with model: @user do |form| %>
-
   <div class="form-group">
     <%= form.label :username %>
     <%= form.text_field :username, class: 'form-control' %>
     <small id="username_help" class="form-text text-muted">Enter your new username</small>
   </div>
 
-    <div class="submit-field">
-      <%= form.submit "Save" %>
+  <div data-controller="image-preview">
+    <%= image_tag(@user.avatar.variant(resize: "100x100"), data: { target: "image-preview.output" }) %>
+  
+    <div class="form-group">
+      <%= form.file_field :avatar, 
+        data: { target: "image-preview.input", action: "image-preview#readURL" } %>
     </div>
+
+  <div class="submit-field">
+    <%= form.submit "Save" %>
+  </div>
 <% end %>
+
+<h3> Security </h3>
+<%= link_to "Change Password", new_password_path %>
 

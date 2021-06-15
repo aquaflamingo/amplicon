@@ -1,0 +1,12 @@
+<div class="nav">
+  <h1> Amplicon </h1>
+  <% if signed_in? %>
+    <%= image_tag user_avatar(current_user, 40), class: 'rounded-circle' %>
+    <%= link_to current_user.username, user_path(current_user) %>
+    <%= link_to "Create new protocol", new_protocol_path %>
+    <%= link_to "Sign out", sign_out_path, method: :delete %>
+  <% else %>
+    <%= link_to "Login", sign_in_path %>
+    <%= link_to "Sign Up", sign_up_path %>
+  <% end %>
+</div>

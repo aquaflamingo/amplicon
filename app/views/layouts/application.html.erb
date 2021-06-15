@@ -11,14 +11,7 @@
   </head>
 
   <body>
-    <% if signed_in? %>
-    <div class="nav">
-      <h1> Amplicon </h1>
-        <%= link_to current_user.username, user_path(current_user) %>
-        <%= link_to "Create new protocol", new_protocol_path %>
-        <%= link_to "Sign out", sign_out_path, method: :delete %>
-    </div>
-    <% end %>
+    <%= render partial: 'shared/navbar' %>
 
     <div id="flash-container">
       <% if !flash.empty? %>

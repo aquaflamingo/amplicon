@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   VALID_USERNAME = /\A(\w|\.)+\z/.freeze
 
+  has_one_attached :avatar 
+
   has_many :protocols
   has_many :favorite_protocols # setup relationship
   has_many :favorites, through: :favorite_protocols, source: :protocol
