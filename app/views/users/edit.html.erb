@@ -7,13 +7,13 @@
     <small id="username_help" class="form-text text-muted">Enter your new username</small>
   </div>
 
-  <div data-controller="user-avatar-preview">
+  <div data-controller="image-preview">
     <!-- TODO stimulus -->
-    <%= image_tag(@user.avatar.variant(resize: "100x100"), data: { target: "user-avatar-preview.output" }) %>
+    <%= image_tag(@user.avatar.variant(resize: "100x100"), data: { target: "image-preview.output" }) %>
   
     <div class="form-group">
       <%= form.file_field :avatar, 
-        data: { target: "user-avatar-preview.input", action: "user-avatar-preview#readURL" } %>
+        data: { target: "image-preview.input", action: "image-preview#readURL" } %>
     </div>
 
   <div class="submit-field">
