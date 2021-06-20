@@ -65,6 +65,8 @@ GEM
     argon2 (2.0.3)
       ffi (~> 1.14)
       ffi-compiler (~> 1.0)
+    audited (5.0.1)
+      activerecord (>= 5.0, < 6.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
@@ -265,6 +267,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  audited
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
