@@ -23,7 +23,9 @@ class ProtocolsController < ApplicationController
     if @proto.update(proto_params)
       redirect_to @proto, notice: "Updated!"
     else
-      render template: 'edit'
+      flash.now[:warning] = @proto.errors.full_messages.join(', ')
+
+      render 'edit'
     end
   end
   
@@ -43,7 +45,9 @@ class ProtocolsController < ApplicationController
     if @proto.save
       redirect_to @proto, success: "Protocol created"
     else
-      redirect_to new_protocol_path, warning: "Failed to create protocol"
+      flash.now[:warning] = "Failed to create protocol"
+
+      render 'new' 
     end
   end
 
