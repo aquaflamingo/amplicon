@@ -57,7 +57,7 @@ class ProtocolsController < ApplicationController
   end
 
   def proto_params
-    params.require(:protocol).permit(:name, :description, :equipment, :reagents, :materials, :private)
+    params.require(:protocol).permit(:name, :description, :content, :private)
   end
 
   def favorite_params
