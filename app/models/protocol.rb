@@ -1,4 +1,5 @@
 class Protocol < ApplicationRecord
+
   VALID_NAME =  /\A(\w|\.)+\z/.freeze
 
   belongs_to :user
@@ -14,7 +15,9 @@ class Protocol < ApplicationRecord
   has_rich_text :equipment
   has_rich_text :materials
 
-  audited
+  audited associated_with: :reagents
+  audited associated_with: :equipment
+  audited associated_with: :materials
 
   alias_attribute :owner, :user 
 end
