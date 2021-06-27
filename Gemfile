@@ -13,7 +13,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 gem 'clearance'
 gem 'image_processing', "~> 1.2"
+# Track all changes related to model
 gem 'audited'
+# Render diffs between strings
+gem 'diffy'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
