@@ -1,0 +1,10 @@
+<% audit_version_diffs_for(@proto).each do |change_list| %>
+  <div class="version-diff">
+    <% change_list.each do |attr_changed, diff|  %>
+      <div class="change-diff"> 
+        <p><%= attr_changed %> was modified</p>
+        <%=  diff.to_html %> 
+      </div>
+    <% end %>
+  </div>
+<% end %>
