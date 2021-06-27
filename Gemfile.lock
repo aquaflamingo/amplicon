@@ -65,6 +65,8 @@ GEM
     argon2 (2.0.3)
       ffi (~> 1.14)
       ffi-compiler (~> 1.0)
+    audited (5.0.1)
+      activerecord (>= 5.0, < 6.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
@@ -98,6 +100,7 @@ GEM
       activerecord
       database_cleaner (~> 1.8.0)
     diff-lcs (1.4.4)
+    diffy (3.4.0)
     email_validator (2.2.3)
       activemodel
     erubi (1.10.0)
@@ -265,11 +268,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  audited
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
   clearance
   database_cleaner-active_record (~> 1.8.0)
+  diffy
   factory_bot_rails (~> 5.1.1)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
