@@ -11,13 +11,9 @@ class Protocol < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3, maximum: 20 }, format: { with: VALID_NAME, message: 'Protocol can only include numbers, letters or underscores.'  }
   validates :description, presence: true, length: { minimum: 0, maximum: 140 }
 
-  has_rich_text :reagents
-  has_rich_text :equipment
-  has_rich_text :materials
+  has_rich_text :content
 
-  audited associated_with: :reagents
-  audited associated_with: :equipment
-  audited associated_with: :materials
+  audited associated_with: :content
 
   alias_attribute :owner, :user 
 end
