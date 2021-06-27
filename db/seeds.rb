@@ -10,7 +10,7 @@
   u = User.create!(
     username: "amplicon_user_#{i}",
     email: "user_#{i}@amplicon.app",
-    password: "hunter_#{i}"
+    password: "hunter#{i}"
   )
 
   other_users = User.all
