@@ -46,7 +46,14 @@ module ProtocolsHelper
       #    description => Diff
       # }
       consolidated_changes.map do |change_key, change_values|
-        { change_key => Diff.new(change_values.first, change_values.second) }
+        if change_values.is_a?(String)
+          # The creation event does not have a previous value 
+          first, second = "No content", change_values
+        else
+          first, second = change_values
+        end
+
+        { change_key => Diff.new(first, second) }
       end.inject({}, :merge)
     end
 
