@@ -22,3 +22,5 @@ Favourited by <%= @proto.favorited_by.size %> users.
   <%= button_to "Favorite", favorite_protocol_path(@proto, action_type: "favorite"), method: :put %>
 <% end %>
 
+<h2>History</h2>
+<%= render partial: "/protocols/history", object: @proto %>
