@@ -22,25 +22,8 @@
 
 <div class="form-group">
   <div class="field">
-    <%= form.label :reagents %>
-    <%= form.rich_text_area :reagents %>
-    <small id="reagents_help" class="form-text text-muted">What are the necessary reagents?</small>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="field">
-    <%= form.label :equipment %>
-    <%= form.rich_text_area :equipment %>
-    <%= @proto.equipment %>
-    <small id="equipment_help" class="form-text text-muted">What is this equipment about?</small>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="field">
-    <%= form.label :materials %>
-    <%= form.rich_text_area :materials %>
-    <small id="materials_help" class="form-text text-muted">What is this materials about?</small>
+    <%= form.label :content %>
+    <%= form.rich_text_area :content %>
+    <small id="content_help" class="form-text text-muted">What are the necessary equipment, materials and reagents?</small>
   </div>
 </div>
