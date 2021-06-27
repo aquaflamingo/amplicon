@@ -66,24 +66,30 @@ module ProtocolsHelper
     #
     # @return [Hash] 
     def consolidated_changes
-      direct_changes.merge(associated_changes)
+      audited_changes.merge(associated_audit_changes)
     end
     
     # Transforms the associated changes for the +audit_object+ into
     # the same format as the audited_changes.
-    def associated_changes
+    def associated_audit_changes
       associated = @audit_object.associated
       if associated.blank? || associated.empty?
         {}
       else
-        {
-          associated.name => ["", associated.body.to_plain_text]
-        }
+        # TODO, how do you associate the RichText audit events
+        # with the events from the Protocol change. You cannot use
+        # versions, because, you may make a Protocol.title change
+        # but not rich text change. The result is no incrementing for 
+        # other attributes
+        #
+        # Maybe, we decide NOT to audit the base protocol attributes, and just
+        # the diffs for rich text because that's really all you would care about right?
+        associated.audits.first.audited_changes
       end
     end
 
     # Returns all audited_changes 
-    def direct_changes
+    def audited_changes
       @audit_object.audited_changes
     end
   end
