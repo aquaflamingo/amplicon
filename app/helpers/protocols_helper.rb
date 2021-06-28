@@ -15,13 +15,6 @@ module ProtocolsHelper
     end
   end
 
-  # Renders HTML Diff for a each change made the protocol in its version history
-  def audit_version_diffs_for(proto)
-    proto.own_and_associated_audits.map do |audit_item| 
-      AuditDiff.new(audit_item).to_version_diff
-    end
-  end
-
   class Diff
     attr_reader :diff
 
