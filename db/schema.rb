@@ -89,10 +89,6 @@ ActiveRecord::Schema.define(version: 2021_06_20_040917) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "resource"
-    t.text "reagents"
-    t.text "methods"
-    t.text "equipment"
     t.bigint "user_id", null: false
     t.boolean "private", default: false, null: false
     t.index ["user_id"], name: "index_protocols_on_user_id"
@@ -117,16 +113,6 @@ ActiveRecord::Schema.define(version: 2021_06_20_040917) do
     t.string "username", null: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
-  end
-
-  create_table "versions", force: :cascade do |t|
-    t.string "item_type", null: false
-    t.bigint "item_id", null: false
-    t.string "event", null: false
-    t.string "whodunnit"
-    t.text "object"
-    t.datetime "created_at"
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
