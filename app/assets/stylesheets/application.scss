@@ -1,17 +1,10 @@
-// 
-// *= require_tree .
-// *= require_self
-
-// $navbar-default-bg: #312312;
-// $light-orange: #ff8c00;
-// $navbar-default-color: $light-orange;
-
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
+
 @font-face {
   font-family: "bootstrap-icons";
   src: font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff2") format("woff2"),
-    font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
+			 font-url("bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
 }
 
 @include media-breakpoint-down(xs) {
