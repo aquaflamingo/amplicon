@@ -8,7 +8,7 @@
   </div>
 
   <div data-controller="image-preview">
-    <%= image_tag(@user.avatar.variant(resize: "100x100"), data: { target: "image-preview.output" }) %>
+    <%= image_tag(@user.avatar.variant(resize: "100x100"), data: { target: "image-preview.output" }) if @user.avatar.attached? %>
   
     <div class="form-group">
       <%= form.file_field :avatar, 
