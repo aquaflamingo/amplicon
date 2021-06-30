@@ -10,8 +10,8 @@ Favourited by <%= @proto.favorited_by.size %> users.
 <%= @proto.content %>
 
 <% if has_favorited?(current_user, @proto) %>
-  <%= button_to "Unfavorite", favorite_protocol_path(@proto, action_type: "unfavorite"), method: :put %>
+  <%= link_to "Unfavorite", favorite_protocol_path(@proto, action_type: "unfavorite"), method: :put, class: "btn btn-danger"%>
 <% else %>
-  <%= button_to "Favorite", favorite_protocol_path(@proto, action_type: "favorite"), method: :put %>
+  <%= button_to "Favorite", favorite_protocol_path(@proto, action_type: "favorite"), method: :put, class: "btn btn-primary"%>
 <% end %>
 
