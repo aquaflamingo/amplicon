@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 gem 'clearance'
 gem 'image_processing', "~> 1.2"
+gem 'bootstrap', '5.0.0'
 # Track all changes related to model
 gem 'audited'
 # Render diffs between strings
