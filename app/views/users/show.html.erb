@@ -1,23 +1,31 @@
 <!-- Col 3 -->
-<h2>@<%= @user.username %></h2>
-<p> User Info </p>
-<% if is_current_user?(@user) %>
-  <%= link_to "Edit Account", edit_user_path(@user), class: 'btn btn-info' %>
-<% else %>
-  <%= render partial: '/users/follow_form', object: @user %>
-<% end %>
+<div class="container"> 
+  <div class="row">
+      <div class="col-4">
+        <h1>@<%= @user.username %></h1>
+        <%= image_tag user_avatar(@user), width: 100, height: 100, class: "rounded-circle" %>
 
-<!-- Col 9 -->
-<h3> Protocols </h3>
-<div>
-  <% @user_protocols.each do |p| %>
-    <! -- card -->
-    <div>
-      <%= link_to protocol_path(p) do %>
-        <p><%= p.name %></p>
-        <p><%= p.description %></p>
-        <p><%= p.favorited_by.count %> favorite </p> 
-      <% end %>
-    </div>
-  <% end%>
+        <% if is_current_user?(@user) %>
+          <%= link_to "Edit Account", edit_user_path(@user), class: 'btn btn-primary' %>
+        <% else %>
+          <%= render partial: '/users/follow_form', object: @user %>
+        <% end %>
+      </div>
+
+      <div class="col-8">
+        <h2> Protocols </h2>
+        <div>
+          <% @user_protocols.each do |p| %>
+            <! -- card -->
+            <div>
+              <%= link_to protocol_path(p) do %>
+                <p><%= p.name %></p>
+                <p><%= p.description %></p>
+                <p><%= p.favorited_by.count %> favorite </p> 
+              <% end %>
+            </div>
+          <% end%>
+        </div>
+      </div>
+  </div>
 </div>
