@@ -16,14 +16,7 @@
         <h2> Protocols </h2>
         <div>
           <% @user_protocols.each do |p| %>
-            <! -- card -->
-            <div>
-              <%= link_to protocol_path(p) do %>
-                <p><%= p.name %></p>
-                <p><%= p.description %></p>
-                <p><%= p.favorited_by.count %> favorite </p> 
-              <% end %>
-            </div>
+            <%= render partial: "/protocols/card", locals: { protocol: p } %>
           <% end%>
         </div>
       </div>

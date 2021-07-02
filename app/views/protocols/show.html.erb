@@ -1,5 +1,6 @@
-<h1><%= link_to @proto.owner.username, user_path(@proto.owner) %>/<%= @proto.name %></h1>
-<%= render_visibility_badge(@proto) %>
+<%= user_protocol_header(@proto) %>
+<%= visibility_badge(@proto) %>
+
 <%= @proto.description %>
 
 <%= link_to "Edit", edit_protocol_path(@proto) %>
