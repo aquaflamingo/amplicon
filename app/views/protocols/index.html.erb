@@ -1,14 +1,11 @@
 <h1>Explore</h1>
+<p>See interesting protocols available!</p>
 <div class="content-feed">
-  <% if @proto.empty? %>
+  <% if @protos.empty? %>
     <p> Nothing new yet! </p>
   <% else %>
-  <% @proto.each do |r| %>
-    <%= link_to r.name, r %>
+    <% @protos.each do |proto| %>
+      <%= render partial: "/protocols/card", locals: { protocol: proto } %>
+    <% end %>
   <% end %>
-  <% end %>
-</div>
-
-<div>
-  <%= link_to "Create Protocol", new_protocol_path %>
 </div>

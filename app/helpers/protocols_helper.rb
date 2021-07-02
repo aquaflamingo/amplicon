@@ -1,9 +1,17 @@
 module ProtocolsHelper
+  def user_protocol_header(proto, css: "")
+    content_tag :h5, class: css do
+      concat(link_to proto.owner.username, user_path(proto.owner))
+      concat(" / ")
+      concat(link_to proto.name, protocol_path(proto))
+    end
+  end
+
   def has_favorited?(user, protocol)
     user.favorites.exists?(protocol.id)
   end
 
-  def render_visibility_badge(proto)
+  def visibility_badge(proto)
     if @proto.private?
       content_tag :span, class: "badge rounded-pill bg-dark text-light" do
         "Private"
