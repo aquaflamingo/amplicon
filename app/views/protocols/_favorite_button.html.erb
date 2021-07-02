@@ -1,7 +1,7 @@
 <div>
   <% if has_favorited?(current_user, protocol) %>
-    <%= button_to "Unfavorite", favorite_protocol_path(protocol, action_type: "unfavorite"), method: :put, class: "btn btn-danger" %>
+    <%= button_to "Unfavorite", favorite_protocol_path(protocol, action_type: "unfavorite"), method: :put, class: "btn btn-dark" %>
   <% else %>
-    <%= button_to "Favorite", favorite_protocol_path(protocol, action_type: "favorite"), method: :put, class: "btn btn-primary" %>
+    <%= button_to "Favorite", favorite_protocol_path(protocol, action_type: "favorite"), method: :put, class: "btn btn-light" %>
   <% end %>
 </div>
