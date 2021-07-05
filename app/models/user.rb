@@ -41,4 +41,8 @@ class User < ApplicationRecord
    def unfollow(other_user)
      following.delete(other_user)
   end
+
+   def owns?(protocol)
+     protocols.exists?(protocol.id)
+   end
 end
