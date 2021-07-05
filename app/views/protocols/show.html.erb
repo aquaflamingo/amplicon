@@ -5,9 +5,6 @@
 
 <%= link_to "Edit", edit_protocol_path(@proto) %>
 
-<h2>Popularity</h2>
-Favourited by <%= @proto.favorited_by.size %> users.
-
 <%= @proto.content %>
 
 <%= render partial: "/protocols/favorite_button", locals: { protocol: @proto } %>
