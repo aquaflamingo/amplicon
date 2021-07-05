@@ -1,6 +1,6 @@
 class Protocol < ApplicationRecord
-
   VALID_NAME =  /\A(\w|\.)+\z/.freeze
+
 
   belongs_to :user
   has_many :favorite_protocols # setup relationship
@@ -16,4 +16,6 @@ class Protocol < ApplicationRecord
   audited associated_with: :content
 
   alias_attribute :owner, :user 
+
+  scope :all_public, -> { where(private: false) }
 end
