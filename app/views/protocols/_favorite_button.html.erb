@@ -1,13 +1,11 @@
 <div id='favorite_button' class="input-group">
-  <div class="input-group-text" >
-    <%= protocol.favorited_by.count %>
-  </div>
-
-  <div class="input-group-append">
-    <% if has_favorited?(current_user, protocol) %>
-      <%= button_to "Unfavorite", favorite_protocol_path(protocol, action_type: "unfavorite"), method: :put, class: "btn btn-dark" %>
-    <% else %>
-      <%= button_to "Favorite", favorite_protocol_path(protocol, action_type: "favorite"), method: :put, class: "btn btn-outline-secondary" %>
+  <% if has_favorited?(current_user, protocol) %>
+    <%= button_to favorite_protocol_path(protocol, action_type: "unfavorite"), method: :put, class: "btn btn-dark" do %>
+     <span class="badge bg-dark"><%= protocol.favorited_by.count %></span> Unfavorite
     <% end %>
-  </div>
+  <% else %>
+    <%= button_to favorite_protocol_path(protocol, action_type: "favorite"), method: :put, class: "btn btn-outline-secondary" do %>
+     <span class="badge bg-dark"><%= protocol.favorited_by.count %></span> Favorite
+    <% end %>
+  <% end %>
 </div>
