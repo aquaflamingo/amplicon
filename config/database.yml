@@ -7,6 +7,14 @@ default: &default
   password: <%= ENV['DATABASE_PASSWORD'] ||= 'hunter2' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: amplicon_production
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 development:
   <<: *default
   database: amplicon_development
