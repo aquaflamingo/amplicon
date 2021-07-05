@@ -3,7 +3,7 @@ class ProtocolsController < ApplicationController
   before_action :require_login
 
   def index
-    @protos = current_user.protocols
+    @protos = Protocol.all_public
   end
 
   def show
