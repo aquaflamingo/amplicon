@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+ruby '2.7.2'
 
-ruby '2.7.0'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'bootstrap', '5.0.0'
 gem 'clearance'
