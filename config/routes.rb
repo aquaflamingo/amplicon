@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedIn.new do
-    root to: "protocols#index", as: :signed_in_root
+    root to: 'protocols#index', as: :signed_in_root
   end
 
   constraints Clearance::Constraints::SignedOut.new do
     root to: 'pages#index'
   end
 
-  resources :protocols do 
+  resources :protocols do
     member do
       put :favorite
     end
   end
 
-  # TODO follower stats
+  # TODO: follower stats
   resources :users
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i[create destroy]
 end

@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 class UsersController < Clearance::UsersController
-  before_action :require_login, only: [:show, :edit]
+  before_action :require_login, only: %i[show edit]
   before_action :set_user, only: [:show]
   before_action :set_user_protocols, only: [:show]
 
   #########################################################
   # Read
   #########################################################
-  def show
-  end
+  def show; end
 
   def edit
     @user = current_user
   end
-  
+
   #########################################################
   # Write
   #########################################################
@@ -22,10 +23,10 @@ class UsersController < Clearance::UsersController
     if @user.update(user_update_params)
       redirect_to @user
     else
-      render :edit, warning: @user.errors.full_messages.join(" ")
+      render :edit, warning: @user.errors.full_messages.join(' ')
     end
   end
-  
+
   def create
     @user = user_from_params
 
@@ -33,11 +34,12 @@ class UsersController < Clearance::UsersController
       sign_in @user
       redirect_back_or url_after_create
     else
-      redirect_to sign_up_path, warning: @user.errors.full_messages.join(" ")
+      redirect_to sign_up_path, warning: @user.errors.full_messages.join(' ')
     end
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -64,13 +66,11 @@ class UsersController < Clearance::UsersController
   end
 
   def find_user_protocols
-    private_status = [:false]
+    private_status = [false]
 
     # If the current user is the user being shown show the private repositories
     # Otherwise, leave out
-    if current_user.id == @user.id
-      private_status << :true 
-    end
+    private_status << true if current_user.id == @user.id
 
     @user.protocols.where(private: private_status)
   end
