@@ -45,7 +45,7 @@ class ProtocolsController < ApplicationController
     if @proto.save
       redirect_to @proto, success: "Protocol created"
     else
-      flash.now[:warning] = "Failed to create protocol"
+      flash.now[:warning] = "Failed to create protocol: #{@proto.errors.full_messages.join(". ")}"
 
       render 'new' 
     end
