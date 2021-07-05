@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'factory' do
     it 'has a valid factory' do
       expect(FactoryBot.build(:user)).to be_valid
@@ -36,8 +37,8 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     describe 'username' do
       it 'validates format' do
-        invalid = FactoryBot.build(:user, username: "-1$Invalid")
-        valid = FactoryBot.build(:user, username: "valid_user_1")
+        invalid = FactoryBot.build(:user, username: '-1$Invalid')
+        valid = FactoryBot.build(:user, username: 'valid_user_1')
 
         expect(invalid).not_to be_valid
         expect(valid).to be_valid

@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+if Rails.env.production?
+  abort('The Rails environment is running in production mode!')
+end
 require 'rspec/rails'
 
-Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 # Prevent database truncation if the environment is production
 if Rails.env.production?
-  abort("The Rails environment is running in production mode!")
+  abort('The Rails environment is running in production mode!')
 end
 
 begin
@@ -34,9 +38,9 @@ RSpec.configure do |config|
     Rails.application.load_seed # load db seeds
   end
 
-   config.around(:each) do |example|
+  config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
     end
-   end
+  end
 end

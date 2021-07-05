@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module UsersHelper
   def find_current_user_relationship_to(user)
-    current_user.active_relationships.find_by(followed_id: user.id )
+    current_user.active_relationships.find_by(followed_id: user.id)
   end
 
   def is_current_user?(u)

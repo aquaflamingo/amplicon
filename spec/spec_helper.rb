@@ -1,5 +1,7 @@
-require "database_cleaner/active_record"
-require "webmock/rspec"
+# frozen_string_literal: true
+
+require 'database_cleaner/active_record'
+require 'webmock/rspec'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

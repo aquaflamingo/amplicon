@@ -1,38 +1,38 @@
+# frozen_string_literal: true
+
 class ProtocolsController < ApplicationController
-  before_action :set_proto, only: [:show, :edit, :favorite, :update]
+  before_action :set_proto, only: %i[show edit favorite update]
   before_action :require_login
 
   def index
-    @protos = current_user.protocols
+    @protos = Protocol.all_public
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @proto = current_user.protocols.new
   end
 
-  def edit
-  end
+  def edit; end
 
   #######################################################
   # Write
   #######################################################
   def update
     if @proto.update(proto_params)
-      redirect_to @proto, notice: "Updated!"
+      redirect_to @proto, notice: 'Updated!'
     else
       flash.now[:warning] = @proto.errors.full_messages.join(', ')
 
       render 'edit'
     end
   end
-  
-  def favorite 
-    if favorite_params[:action_type] == "favorite"
+
+  def favorite
+    if favorite_params[:action_type] == 'favorite'
       current_user.favorites << @proto
-    else 
+    else
       current_user.favorites.delete(@proto.id)
     end
 
@@ -43,15 +43,16 @@ class ProtocolsController < ApplicationController
   def create
     @proto = current_user.protocols.build(proto_params)
     if @proto.save
-      redirect_to @proto, success: "Protocol created"
+      redirect_to @proto, success: 'Protocol created'
     else
-      flash.now[:warning] = "Failed to create protocol"
+      flash.now[:warning] = "Failed to create protocol: #{@proto.errors.full_messages.join('. ')}"
 
-      render 'new' 
+      render 'new'
     end
   end
 
-  private 
+  private
+
   def set_proto
     @proto = Protocol.find(params[:id])
   end

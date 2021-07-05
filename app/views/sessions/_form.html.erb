@@ -1,16 +1,8 @@
 <%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
-  </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="submit-field">
-    <%= form.submit %>
+  <%= render partial: '/users/form', object: form %>
+  <div class="submit-field pt-3">
+    <%= form.submit "Sign up", class: "btn btn-primary" %>
   </div>
 
   <div class="other-links">

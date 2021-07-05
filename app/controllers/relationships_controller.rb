@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RelationshipsController < ApplicationController
   before_action :require_login
   before_action :set_relationship, only: [:destroy]
@@ -21,6 +23,7 @@ class RelationshipsController < ApplicationController
   end
 
   private
+
   def set_relationship
     @relationship = Relationship.find(params[:id])
   end

@@ -1,21 +1,27 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<div class="row">
+  <div class="col"></div>
+  <div class="col">
+    <div class="content border p-5">
+      <div id="clearance" class="sign-up">
+        <h2><%= t(".title") %></h2>
 
-  <%= form_with model: @user do |form| %>
+        <%= form_with model: @user do |form| %>
+          <div class="form-group">
+            <%= form.label :username %>
+            <%= form.text_field :username, class: "form-control", placeholder: "Enter username"%>
+          </div>
 
-    <div class="text-field">
-      <%= form.label :username %>
-      <%= form.text_field :username %>
+          <%= render partial: '/users/form', object: form %>
+          <div class="submit-field pt-3">
+            <%= form.submit "Sign up", class: "btn btn-primary" %>
+          </div>
+
+          <div class="other-links">
+            <%= link_to t(".sign_in"), sign_in_path %>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <%= render partial: '/users/form', object: form %>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
+  </div>
+  <div class="col"></div>
 </div>
