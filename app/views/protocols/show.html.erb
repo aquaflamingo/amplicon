@@ -3,7 +3,9 @@
 
 <%= @proto.description %>
 
-<%= link_to "Edit", edit_protocol_path(@proto) %>
+<% if current_user.owns?(@proto) %>
+  <%= link_to "Edit", edit_protocol_path(@proto) %>
+<% end %>
 
 <%= @proto.content %>
 

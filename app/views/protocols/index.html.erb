@@ -1,11 +1,15 @@
-<h1>Explore</h1>
-<p>See interesting protocols available!</p>
-<div class="content-feed">
-  <% if @protos.empty? %>
-    <p> Nothing new yet! </p>
-  <% else %>
-    <% @protos.each do |proto| %>
-      <%= render partial: "/protocols/card", locals: { protocol: proto } %>
+<div class="row">
+  <h1>Explore</h1>
+  <p>See interesting protocols available!</p>
+  <div class="content-feed">
+    <% if @protos.empty? %>
+      <p> Nothing new yet! </p>
+    <% else %>
+      <% @protos.each do |proto| %>
+        <div class="card-content pt-3">
+          <%= render partial: "/protocols/card", locals: { protocol: proto } %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
