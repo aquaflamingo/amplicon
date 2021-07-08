@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :protocols
-  has_many :favorite_protocols # setup relationship
+  has_many :protocols, dependent: :destroy
+  has_many :favorite_protocols, dependent: :destroy# setup relationship
   has_many :favorites, through: :favorite_protocols, source: :protocol
 
   has_many :active_relationships,
