@@ -1,33 +1,8 @@
-<!-- Col 3 -->
-<div class="container"> 
-  <div class="row gx-4">
-    <div class="col-lg-3">
-      <div class="content justify-content-center p-2">
-        <div class="row mb-2">
-          <%= image_tag user_avatar(@user, 300), class: "rounded-circle" %>
-        </div> 
+<div class="row">
+  <%= render partial: "user_info_aside", object: @user %>
 
-        <div class="row">
-          <div class="user-content">
-            <h5>@<%= @user.username %></h5>
-            <h3><%= @user.display_name %></h3>
-            <p> <%= @user.description %> </p>
-
-            <%= render partial: "/users/user_statistics", object: @user %>
-          </div>
-        </div>
-
-        <div class="row">
-          <% if is_current_user?(@user) %>
-            <%= link_to "Edit Account", edit_user_path(@user), class: 'btn btn-primary' %>
-          <% else %>
-            <%= render partial: '/users/follow_form', object: @user %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-9">
+  <div class="col-md-8 ms-3">
+    <section name="protocol_content">
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Protocols</a>
@@ -48,6 +23,6 @@
           </div> 
         <% end%>
       </div>
-    </div>
+    </section>
   </div>
 </div>
