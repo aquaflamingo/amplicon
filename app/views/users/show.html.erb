@@ -28,21 +28,25 @@
     </div>
 
     <div class="col-lg-9">
-      <div class="content p-3">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Protocols</a>
-          </li>
-        </ul>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Protocols</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Followers", followers_user_path(@user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Following", following_user_path(@user), class: "nav-link" %>
+        </li>
+      </ul>
 
-        <!-- TODO tab-able -->
-        <div class="row p-4">
-          <% @user_protocols.each do |p| %>
-            <div class="row pt-2">
-              <%= render partial: "/protocols/card", locals: { protocol: p } %>
-            </div> 
-          <% end%>
-        </div>
+      <!-- TODO tab-able -->
+      <div class="row p-4">
+        <% @user_protocols.each do |p| %>
+          <div class="row pt-2">
+            <%= render partial: "/protocols/card", locals: { protocol: p } %>
+          </div> 
+        <% end%>
       </div>
     </div>
   </div>
