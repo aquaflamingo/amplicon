@@ -1,18 +1,23 @@
-# frozen_string_literal: true
+User.create!(
+  username: "amplicon_user",
+  email: "user_1@amplicon.app",
+  password: "hunter1",
+  display_name: "Amplicon User",
+  description: "I am an amplicon user"
+) unless User.exists?(username: "amplicon_user")
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+10.times do |i|
+  name = Faker::Name.name
+  email = Faker::Internet.email(name: name)
+  username = Faker::Internet.username(specifier: name)
+  description = "I am a #{Faker::Job.title} in #{Faker::Job.field}. I am interested in #{Faker::Science.element_subcategory} dynamics and #{Faker::Company.bs}. I work at #{Faker::Company.name}."
 
-3.times do |i|
   u = User.create!(
-    username: "amplicon_user_#{i}",
-    email: "user_#{i}@amplicon.app",
-    password: "hunter#{i}"
+    username: username,
+    email: email,
+    password: "hunter1",
+    display_name: name,
+    description: description
   )
 
   other_users = User.all
@@ -20,5 +25,18 @@
   other_users.each do |other|
     u.follow(other)
     u.save
+  end
+
+  2.times do |i|
+    p = u.protocols.create!(
+      name: "protocol_#{i}",
+      description: "A #{Faker::Adjective.positive} generated protocol",
+      content: "Lorem Ipsum"
+    )
+
+    other_users.each do |other|
+      other.favorite(p)
+      other.save
+    end
   end
 end

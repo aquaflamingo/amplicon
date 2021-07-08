@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProtocolsController < ApplicationController
-  before_action :set_proto, only: %i[show edit favorite update]
+  before_action :set_proto, only: %i[show edit favorite update destroy]
   before_action :require_login
 
   def index
@@ -19,6 +19,16 @@ class ProtocolsController < ApplicationController
   #######################################################
   # Write
   #######################################################
+  def destroy
+    # Only owner can destroy the protocol
+    if current_user.owns?(@proto)
+      @proto.destroy
+      redirect_to :root, success: "Protocol was deleted"
+    else
+      redirect_to protocol_path(@proto), warning: "Cannot delete protocol you do not own"
+    end
+  end
+
   def update
     if @proto.update(proto_params)
       redirect_to @proto, notice: 'Updated!'
@@ -31,9 +41,9 @@ class ProtocolsController < ApplicationController
 
   def favorite
     if favorite_params[:action_type] == 'favorite'
-      current_user.favorites << @proto
+      current_user.favorite(@proto)
     else
-      current_user.favorites.delete(@proto.id)
+      current_user.unfavorite(@proto.id)
     end
 
     current_user.save!

@@ -15,6 +15,7 @@
 
     <% if current_user.owns?(@proto) %>
       <%= link_to "Edit", edit_protocol_path(@proto) %>
+      <%= link_to "Delete", protocol_path(@proto), method: :delete, data: { confirm: "This is permenant, are you sure?" }%>
     <% end %>
   </div>
 
