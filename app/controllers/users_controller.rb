@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < Clearance::UsersController
-  before_action :require_login, only: %i[show edit]
-  before_action :set_user, only: [:show]
+  before_action :require_login, only: %i[show edit update followers following favorites]
+  before_action :set_user, only: %i[show followers following favorites]
   before_action :set_user_protocols, only: [:show]
 
   #########################################################
@@ -12,6 +12,25 @@ class UsersController < Clearance::UsersController
 
   def edit
     @user = current_user
+  end
+
+  def followers
+    @title = "Followers"
+    # TODO paginate
+    @users = @user.followers
+
+    render 'show_follow'
+  end
+
+  def following
+    @title = "Following"
+    # TODO paginate
+    @users = @user.following
+
+    render 'show_follow'
+  end
+
+  def favorites
   end
 
   #########################################################

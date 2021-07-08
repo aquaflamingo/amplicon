@@ -1,0 +1,15 @@
+<section name="users_grid">
+  <div class="row">
+    <% if @users.blank? %>
+      <div class="pt-3">
+        <p class="text-muted"> Nothing found.</p>
+      </div>
+    <% else %>
+      <% @users.each do |u| %>
+        <div class="row pt-2 pb-4">
+          <%= render partial: "/users/simple", locals: { user: u } if u.present? %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

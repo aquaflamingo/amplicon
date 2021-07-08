@@ -1,0 +1,11 @@
+<div class="simple-user">
+  <div class="row">
+    <div class="col-sm-3">
+    <%= image_tag(user_avatar(user, 75)) %>
+    </div>
+    <div class="col-md-6">
+      <h5><%= link_to user.username, user_path(user) %></h5>
+      <p><%= user.description %></p>
+    </div>
+  </div>
+</div>

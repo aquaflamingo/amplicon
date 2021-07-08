@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   end
 
   # TODO: follower stats
-  resources :users
+  resources :users do
+    member do
+      get :followers
+      get :following
+    end
+  end
 
   resources :relationships, only: %i[create destroy]
 end
