@@ -4,7 +4,6 @@ class User < ApplicationRecord
   include Clearance::User
 
   VALID_USERNAME = /\A(\w|\.)+\z/.freeze
-  VALID_DISPLAY_NAME = /\A(\w|\.)+ \z/.freeze
 
   has_one_attached :avatar
 
@@ -31,8 +30,7 @@ class User < ApplicationRecord
             format: { with: VALID_USERNAME, message: 'Username can only include numbers, letters or underscores.' }
 
   validates :display_name,
-            length: { maximum: 20 },
-            format: { with: VALID_DISPLAY_NAME, message: 'Display name can only include numbers, letters or underscores.' }
+            length: { maximum: 20 }
 
   validates :description,
             length: { maximum: 200 }
