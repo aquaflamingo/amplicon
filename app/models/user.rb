@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :protocols, dependent: :destroy
   has_many :favorite_protocols, dependent: :destroy# setup relationship
-  has_many :favorites, through: :favorite_protocols, source: :protocol
+  has_many :favorites, through: :favorite_protocols, source: :protocol, dependent: :destroy
 
   has_many :active_relationships,
            foreign_key: 'follower_id',
@@ -37,6 +37,14 @@ class User < ApplicationRecord
 
 
   after_create :set_default_name
+
+  def favorite(p)
+    favorites << p
+  end
+
+  def unfavorite(p)
+    favorites.delete(p.id)
+  end
 
   # Checks whether the User is following another user
   def following?(other_user)

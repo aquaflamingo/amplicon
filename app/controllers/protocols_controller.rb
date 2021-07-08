@@ -31,9 +31,9 @@ class ProtocolsController < ApplicationController
 
   def favorite
     if favorite_params[:action_type] == 'favorite'
-      current_user.favorites << @proto
+      current_user.favorite(@proto)
     else
-      current_user.favorites.delete(@proto.id)
+      current_user.unfavorite(@proto.id)
     end
 
     current_user.save!
