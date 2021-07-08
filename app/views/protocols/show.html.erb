@@ -1,13 +1,31 @@
-<%= user_protocol_header(@proto) %>
-<%= visibility_badge(@proto) %>
+<div class="row">
+  <div class="row"> 
+    <div class="col-md-11">
+      <%= user_protocol_header(@proto) %>
+    </div>
+    <div class="col-md-1">
+      <%= visibility_badge(@proto) %>
+    </div>
+  </div>
 
-<%= @proto.description %>
+  <div class="row">
+    <p>
+    <%= @proto.description %>
+    </p>
 
-<% if current_user.owns?(@proto) %>
-  <%= link_to "Edit", edit_protocol_path(@proto) %>
-<% end %>
+    <% if current_user.owns?(@proto) %>
+      <%= link_to "Edit", edit_protocol_path(@proto) %>
+    <% end %>
+  </div>
 
-<%= @proto.content %>
+  <section name="protocol_content">
+    <div class="mt-3 mb-3">
+      <%= @proto.content %>
+    </div>
+  </section>
 
-<%= render partial: "/protocols/favorite_button", locals: { protocol: @proto } %>
+  <div class="row">
+    <%= render partial: "/protocols/favorite_button", locals: { protocol: @proto, include_count: true } %>
+  </div>
+</div>
 
