@@ -15,11 +15,11 @@ module ProtocolsHelper
 
   def visibility_badge(_proto)
     if @proto.private?
-      content_tag :span, class: 'badge rounded-pill bg-dark text-light' do
+      content_tag :span, class: 'badge rounded-pill bg-dark text-light d-inline' do
         'Private'
       end
     else
-      content_tag :span, class: 'badge rounded-pill  bg-light text-dark' do
+      content_tag :span, class: 'badge rounded-pill  bg-light text-dark d-inline' do
         'Public'
       end
     end
