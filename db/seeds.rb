@@ -1,8 +1,23 @@
-5.times do |i|
+User.create!(
+  username: "amplicon_user",
+  email: "user_1@amplicon.app",
+  password: "hunter1",
+  display_name: "Amplicon User",
+  description: "I am an amplicon user"
+) unless User.exists?(username: "amplicon_user")
+
+10.times do |i|
+  name = Faker::Name.name
+  email = Faker::Internet.email(name: name)
+  username = Faker::Internet.username(specifier: name)
+  description = "I am a #{Faker::Job.title} in #{Faker::Job.field}. I am interested in #{Faker::Science.element_subcategory} dynamics and #{Faker::Company.bs}. I work at #{Faker::Company.name}."
+
   u = User.create!(
-    username: "amplicon_user_#{i}",
-    email: "user_#{i}@amplicon.app",
-    password: "hunter#{i}"
+    username: username,
+    email: email,
+    password: "hunter1",
+    display_name: name,
+    description: description
   )
 
   other_users = User.all
@@ -12,11 +27,11 @@
     u.save
   end
 
-  7.times do |i|
+  2.times do |i|
     p = u.protocols.create!(
       name: "protocol_#{i}",
-      description: "A generated protocol",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+      description: "A #{Faker::Adjective.positive} generated protocol",
+      content: "Lorem Ipsum"
     )
 
     other_users.each do |other|
