@@ -24,8 +24,6 @@
     </div>
   </section>
 
-  <div class="row">
-    <%= render partial: "/protocols/favorite_button", locals: { protocol: @proto, include_count: true } %>
-  </div>
+  <%= render partial: "/protocols/favorite_button", locals: { protocol: @proto, expanded_view: true } %>
 </div>
 

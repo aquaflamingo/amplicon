@@ -11,9 +11,15 @@
   <% end %>
   </div>
 
-  <% if include_count %>
-    <small>
-      <%= pluralize(protocol.favorited_by.count, 'user') %> favorited this protocol
-    </small>
+  <% if local_assigns.fetch(:expanded_view, false) %>
+    <div class="row">
+      <small>
+        <%= pluralize(protocol.favorited_by.count, 'user') %> favorited this protocol
+      </small>
+
+      <div>
+      <%= render partial: "shared/user_avatar_collection", locals: { users: protocol.favorited_by } %>
+      </div>
+    </div>
   <% end %>
 </div>
