@@ -23,7 +23,9 @@ class UsersController < Clearance::UsersController
     if @user.update(user_update_params)
       redirect_to @user
     else
-      render :edit, warning: @user.errors.full_messages.join(' ')
+      flash.now[:warning] = @user.errors.full_messages.join(' ')
+
+      render :edit
     end
   end
 
@@ -49,7 +51,7 @@ class UsersController < Clearance::UsersController
   end
 
   def user_update_params
-    user_params.permit(:username, :avatar)
+    user_params.permit(:username, :avatar, :description, :display_name)
   end
 
   # Parameters used to create a new user record via +new+ and +create

@@ -29,6 +29,15 @@ class User < ApplicationRecord
             length: { minimum: 2, maximum: 20 },
             format: { with: VALID_USERNAME, message: 'Username can only include numbers, letters or underscores.' }
 
+  validates :display_name,
+            length: { maximum: 20 }
+
+  validates :description,
+            length: { maximum: 200 }
+
+
+  after_create :set_default_name
+
   # Checks whether the User is following another user
   def following?(other_user)
     following.include?(other_user)
@@ -46,5 +55,10 @@ class User < ApplicationRecord
 
   def owns?(protocol)
     protocols.exists?(protocol.id)
+  end
+
+  private
+  def set_default_name
+    display_name = username
   end
 end

@@ -2,14 +2,25 @@
 <section class="mt-2 mb-2" id="profile">
   <h2> Profile </h3>
   <%= form_with model: @user do |form| %>
-
-    <div class="form-group mb-5">
-      <small id="username_help" class="form-text text-muted">Enter your new username</small>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">@</span>
+    <div class="text-fields  mb-5" >
+      <div class="form-group">
+        <small id="username_help" class="form-text text-muted">Enter your new username</small>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <%= form.text_field :username, class: 'form-control', placeholder: "Username", aria_label: "Username", aria_describedby: "addon"%>
         </div>
-        <%= form.text_field :username, class: 'form-control', placeholder: "Username", aria_label: "Username", aria_describedby: "addon"%>
+      </div>
+
+      <small id="display_name_help" class="form-text text-muted">Enter your profile display name</small>
+      <div class="input-group">
+        <%= form.text_field :display_name, class: 'form-control', placeholder: "Display name", aria_label: "display_name", aria_describedby: "addon"%>
+      </div>
+
+      <small id="description_help" class="form-text text-muted">Enter your profile description</small>
+      <div class="input-group">
+        <%= form.text_field :description, class: 'form-control', placeholder: "I am a scientist", aria_label: "description", aria_describedby: "addon"%>
       </div>
     </div>
 
