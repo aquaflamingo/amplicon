@@ -21,9 +21,9 @@ gem 'audited'
 # Render diffs between strings
 gem 'diffy'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'faker'
 
 group :development, :test do
-  gem 'faker'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'rspec-rails', '~> 5.0.0'
